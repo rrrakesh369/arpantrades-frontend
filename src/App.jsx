@@ -7,6 +7,8 @@ import appStore from "./utils/appStore"
 import Feed from "./components/Feed"
 import Profile from "./components/Profile"
 import Dashbord from "./components/Dashbord"
+import ConstructionSolution from "./components/ConstructionSolution"
+
 
 
 function App() {
@@ -18,10 +20,13 @@ function App() {
         <Routes>
           <Route path="/" element={<Body />}>
             <Route path="/" element={<Feed />}/>
+            
             <Route path="/login" element={<Login />}/>
             <Route path="/about" element={<About />}/>
             <Route path="/profile" element={<Profile />}/>
             <Route path="/dashbord" element={<Dashbord />}/>
+             <Route path="/construction/solutions/:id" element={<ConstructionSolution />}/>
+              
 
           </Route>
           {/* <Route path="/" element={<Body />} >
