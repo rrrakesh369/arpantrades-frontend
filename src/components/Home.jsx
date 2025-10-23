@@ -19,7 +19,7 @@ const Home = () => {
   if (error) return <p className="p-4 text-red-500">Error: {error}</p>;
 
   return (
-    <div className="flex my-9 mx-9">
+    <div>
       <Dashboard dashboardData={dashboard} />
     </div>
   );

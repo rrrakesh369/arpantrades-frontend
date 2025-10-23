@@ -11,23 +11,30 @@ const { title, imageUrl, loading } =  dashboardData
   // const cleanPath = (path) => path.replace('/public', '');  
 
    useEffect(() => {
-    // dispatch(fetchDashboard());
-
+  const adjustPageHeight = () => {
     const body = document.body;
-  const html = document.documentElement;
+    const html = document.documentElement;
 
-  const currentBodyHeight = parseInt(window.getComputedStyle(body).height, 10);
-  const currentHtmlHeight = parseInt(window.getComputedStyle(html).height, 10);
-  const maxCurrentHeight = Math.max(currentBodyHeight, currentHtmlHeight);
+    // scrollHeight is more reliable for total page height
+    const maxScrollHeight = Math.max(body.scrollHeight, html.scrollHeight);
+    const newHeight = maxScrollHeight + 250;
 
-  const newHeight = maxCurrentHeight + 250;
+    body.style.minHeight = `${newHeight}px`;
+    html.style.minHeight = `${newHeight}px`;
+  };
 
-  body.style.height = `${newHeight}px`;
-  html.style.height = `${newHeight}px`;
+  // Run after DOM paints
+  const timeout = setTimeout(adjustPageHeight, 100);
+
+  // Optional: update on resize (or after async content loads)
+  window.addEventListener('resize', adjustPageHeight);
 
   return () => {
-    body.style.height = `${currentBodyHeight}px`;
-    html.style.height = `${currentHtmlHeight}px`;
+    clearTimeout(timeout);
+    window.removeEventListener('resize', adjustPageHeight);
+
+    document.body.style.minHeight = '';
+    document.documentElement.style.minHeight = '';
   };
 }, []);
   //   // Get current height
@@ -56,7 +63,7 @@ const { title, imageUrl, loading } =  dashboardData
   </div>
   <div className='flex flex-wrap justify-center gap-4'>
    {imageUrl?.map((img, i) => (
-   <div  key={i} className="card bg-base-100 w-96 shadow-sm">
+   <div  key={i} className="card bg-base-100 w-96 shadow-sm  hover:bg-gray-200">
    <figure>         
             <img 
                        

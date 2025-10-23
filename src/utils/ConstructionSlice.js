@@ -13,7 +13,7 @@ export const fetchConstruction = createAsyncThunk(
 const constructionSlice = createSlice({
   name: 'construction',
   initialState: {
-    id: '',
+    _id: '',
     name: '',
     description: '',
     title: '',
