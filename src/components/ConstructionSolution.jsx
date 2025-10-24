@@ -10,9 +10,11 @@ import { BASE_URL } from '../utils/constants';
 const ConstructionSolution = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { name, description, title, imageUrl, loading } = useSelector(
+  const { name, description, title, imageName, imageUrl, loading } = useSelector(
     (state) => state.construction
   );
+  console.log(imageUrl)
+  console.log(imageName)
 
   useEffect(() => {
   if (id && typeof id === 'string') {
@@ -70,23 +72,25 @@ useEffect(() => {
 
           return (
             <div key={i} className="card bg-base-100 w-96 shadow-sm hover:bg-gray-200">
-              <figure>
-                <img
-                  src={finalUrl}
-                  alt={`img${i}`}
-                  onError={(e) => (e.target.src = '/fallback.jpg')} // optional fallback
-                  className="object-cover w-full h-64"
-                />
-              </figure>
-              <div className="card-body justify-center gap-x-4">
-                <h2 className="card-title">Card Title</h2>
-                <p>
+             <figure>
+          <img
+            src={finalUrl}
+            alt={imageName?.[i] || `img${i}`}
+            onError={(e) => (e.target.src = '/fallback.jpg')}
+            className="object-cover w-full h-64"
+          />
+        </figure>
+        <div className="card-body justify-center gap-x-4">
+          <h2 className="card-title my-4 justify-center">
+            {imageName?.[i] || `Image ${i + 1}`}
+          </h2>
+                {/* <p>
                   A card component has a figure, a body part, and inside body
                   there are title and actions parts
-                </p>
-                <div className="card-actions justify-end">
+                </p> */}
+                {/* <div className="card-actions justify-end">
                   <button className="btn btn-primary">Buy Now</button>
-                </div>
+                </div> */}
               </div>
             </div>
           );

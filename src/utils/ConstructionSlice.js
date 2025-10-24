@@ -14,9 +14,11 @@ const constructionSlice = createSlice({
   name: 'construction',
   initialState: {
     _id: '',
+    prodType: '',
     name: '',
     description: '',
     title: '',
+    imageName: [],
     imageUrl: [],
     loading: false,
   },
@@ -35,7 +37,9 @@ const constructionSlice = createSlice({
         state.name = data.name || '';
         state.description = data.description || '';
         state.title = data.title || '';
+        state.prodType= data.prodType || '';
         state.imageUrl = Array.isArray(data.imageUrl) ? data.imageUrl : [];
+        state.imageName = Array.isArray(data.imageName) ? data.imageName : [];
       })
       .addCase(fetchConstruction.rejected, (state) => {
         state.loading = false;

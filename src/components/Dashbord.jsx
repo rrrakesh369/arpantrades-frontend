@@ -57,10 +57,10 @@ const { title, imageUrl, loading } =  dashboardData
 
   return (
     <div  className="collapse collapse-open bg-base-100 border-base-300 border">
-  <div className="collapse-title font-semibold">{title}</div>
-  <div className="collapse-content text-sm">
+  <div className="collapse-title font-semibold my-9 text-center text-3xl">{title}</div>
+  {/* <div className="collapse-content text-sm">
     Click the "Sign Up" button in the top right corner and follow the registration process.
-  </div>
+  </div> */}
   <div className='flex flex-wrap justify-center gap-4'>
    {imageUrl?.map((img, i) => (
    <div  key={i} className="card bg-base-100 w-96 shadow-sm  hover:bg-gray-200">
