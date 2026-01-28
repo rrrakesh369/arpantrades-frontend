@@ -1,23 +1,22 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { BASE_URL } from "./constants";
 
-// Async thunk to fetch dashboard data
 export const fetchDashboard = createAsyncThunk(
-  'dashboard/fetchDashboard',
+  "dashboard/fetchDashboard",
   async () => {
-    const response = await fetch(BASE_URL + '/dashboard');
+    const response = await fetch(`${BASE_URL}/dashboard`);
     if (!response.ok) {
-      throw new Error('Failed to fetch dashboard data');
+      throw new Error("Failed to fetch dashboard data");
     }
     return response.json();
   }
 );
 
 const dashboardSlice = createSlice({
-  name: 'dashboard',
+  name: "dashboard",
   initialState: {
-    title: '',
-    imageUrl: [],
+    title: "",
+    images: [],        // ✅ MATCH API
     loading: false,
     error: null,
   },
@@ -30,7 +29,7 @@ const dashboardSlice = createSlice({
       .addCase(fetchDashboard.fulfilled, (state, action) => {
         state.loading = false;
         state.title = action.payload.title;
-        state.imageUrl = action.payload.imageUrl;
+        state.images = action.payload.images; // ✅ IMPORTANT
       })
       .addCase(fetchDashboard.rejected, (state, action) => {
         state.loading = false;

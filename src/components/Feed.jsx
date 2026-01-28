@@ -6,6 +6,7 @@ import axios from 'axios'
 import { addUser } from '../utils/userSlice'
 import { BASE_URL } from '../utils/constants'
 import Home from './Home';
+import HeroSection from './HeroSection'
 
 const Feed = () => {
 
@@ -32,7 +33,7 @@ const Feed = () => {
 
   return (
    <div className='max-h-screen'>
-    <img
+        {/* <img
     className="bg-no-repeat bg-center bg-cover w-full h-auto"
     src="/images/upload/dashboardimage1.jpg"
     alt="image description"
@@ -40,7 +41,7 @@ const Feed = () => {
      <figcaption className="absolute left-10 px-4 text-lg text-white p-10 top-40 bg-black/40 mx-6 ">
       <p className=' text-4xl font-bold'>BUILDING SOLUTIONS</p>
       <p className='font-medium '>High-Performance Solutions for the Construction Industry</p>
-  </figcaption>
+  </figcaption> */}
    <Home/>
    </div>
   )

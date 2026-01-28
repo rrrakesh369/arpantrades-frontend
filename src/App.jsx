@@ -8,6 +8,8 @@ import Feed from "./components/Feed"
 import Profile from "./components/Profile"
 import Dashbord from "./components/Dashbord"
 import ConstructionSolution from "./components/ConstructionSolution"
+import ConstructionAllSolution from "./components/ConstructionAllSolution"
+import ConstructionTypeSolution from "./components/ConstructionTypeSolution"
 
 
 
@@ -25,7 +27,9 @@ function App() {
             <Route path="/about" element={<About />}/>
             <Route path="/profile" element={<Profile />}/>
             <Route path="/dashbord" element={<Dashbord />}/>
-             <Route path="/construction/solutions/:id" element={<ConstructionSolution />}/>
+             {/* <Route path="/construction/solutions/:id" element={<ConstructionSolution />}/> */}
+             {/* <Route path="/construction/solutions" element={<ConstructionAllSolution/>}/> */}
+             <Route path="/solutions/:prodType" element={<ConstructionTypeSolution />} />
               
 
           </Route>
